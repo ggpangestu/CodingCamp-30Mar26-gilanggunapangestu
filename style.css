@@ -1,0 +1,21 @@
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* TRACK (BACKGROUND) → TRANSPARENT */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* THUMB (yang bisa digeser) */
+::-webkit-scrollbar-thumb {
+    /* background-color: #cbd5f5; */
+    background-color: rgba(148, 163, 184, 0.6);
+    border-radius: 9999px;
+}
+
+/* DARK MODE */
+.dark ::-webkit-scrollbar-thumb {
+    background-color: #475569;
+}
