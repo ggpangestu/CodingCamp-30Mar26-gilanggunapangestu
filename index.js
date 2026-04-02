@@ -529,6 +529,14 @@ function renderFilterCategories() {
     });
 }
 
+function resetCategoryFilter() {
+    currentFilter = "";
+
+    const select = document.getElementById("filterCategory");
+    if (select) {
+        select.value = "";
+    }
+}
 
 function getFilteredTransactions() {
     let data = getTransactions();
@@ -704,6 +712,7 @@ function selectMonth(monthKey) {
 
 function resetMonth() {
     currentMonth = null;
+    resetCategoryFilter();
     refreshUI();
 }
 
@@ -892,6 +901,7 @@ function renderYearOptions() {
 function changeYear() {
     currentYear = parseInt(document.getElementById("yearSelect").value);
     currentMonth = null;
+    resetCategoryFilter();
     refreshUI();
 }
 
