@@ -790,6 +790,12 @@ function getMonthlySummary() {
 
 function updateMonthLabel() {
     const el = document.getElementById("currentMonthLabel");
+    const data = getFilteredTransactions();
+
+    if (data.length === 0) {
+        el.innerText = "";
+        return;
+    }
 
     if (currentMonth) {
         const [year, month] = currentMonth.split("-");
@@ -804,7 +810,6 @@ function updateMonthLabel() {
 
     if (currentYear) {
         el.innerText = currentYear;
-        return;
     }
 }
 

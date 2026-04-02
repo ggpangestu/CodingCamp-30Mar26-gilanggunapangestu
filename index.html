@@ -169,7 +169,7 @@
                         class="text-sm px-3 py-1 mb-4 rounded font-bold text-blue-600 dark:bg-blue-900/40 dark:text-blue-300">
                     </span>
     
-                    <div class="flex flex-wrap gap-2 mb-4">
+                    <div class="flex flex-nowrap md:flex-wrap items-center px-2 gap-2 mb-4">
     
                         <!-- SORT TOGGLE -->
                         <button 
@@ -190,7 +190,7 @@
                             class="px-2 py-1 border border-gray-300 dark:border-gray-600 
                                 bg-white dark:bg-gray-700 
                                 text-gray-800 dark:text-white 
-                                rounded text-sm transition-colors duration-300"
+                                rounded text-sm w-full md:w-auto transition-colors duration-300"
                         >
                             <option value="">All</option>
                         </select>
@@ -221,7 +221,7 @@
                 <h2 class="text-lg md:text-xl font-semibold">
                     Monthly Summary
                 </h2>
-                <div class="gap-2">
+                <div class="flex flex-nowrap md:flex-wrap items-center px-2 gap-2">
                     <button 
                         onclick="resetMonth()"
                         class="px-3 py-1 text-sm bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
