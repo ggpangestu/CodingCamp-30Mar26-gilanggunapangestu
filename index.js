@@ -80,7 +80,6 @@ form.addEventListener("submit", function(e) {
     container.scrollTop = 0;
     
     form.reset();
-    setDefaultDate();
 
     refreshUI();
 });
@@ -717,10 +716,10 @@ function resetMonth() {
 }
 
 //============================================================SUMMARY
-function setDefaultDate() {
-    const today = new Date().toISOString().split("T")[0];
-    document.getElementById("date").value = today;
-}
+// function setDefaultDate() {
+//     const today = new Date().toISOString().split("T")[0];
+//     document.getElementById("date").value = today;
+// }
 
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -923,7 +922,6 @@ function init() {
     renderChart();
     loadTheme();
     renderMonthlySummary();
-    setDefaultDate();
     updateMonthLabel();
     renderYearOptions();
     updateSortButton();
