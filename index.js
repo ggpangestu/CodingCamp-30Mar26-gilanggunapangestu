@@ -82,6 +82,8 @@ form.addEventListener("submit", function(e) {
     form.reset();
 
     refreshUI();
+    
+    renderYearOptions()
 });
 
 hitungTotal();
