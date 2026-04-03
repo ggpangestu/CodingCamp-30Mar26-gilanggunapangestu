@@ -65,6 +65,10 @@ form.addEventListener("submit", function(e) {
     
     const transactions = getTransactions();
     transactions.push(newData);
+
+    const selectedYear = new Date(dateInput).getFullYear();
+    currentYear = selectedYear;
+    currentMonth = null;
     
     saveTransactions(transactions);
     
@@ -81,9 +85,8 @@ form.addEventListener("submit", function(e) {
     
     form.reset();
 
-    refreshUI();
-    
     renderYearOptions()
+    refreshUI();
 });
 
 hitungTotal();
@@ -452,7 +455,7 @@ function deleteTransaction(id) {
             data = data.filter(t => t.id !== id);
 
             saveTransactions(data);
-
+            renderYearOptions()
             refreshUI();
 
             // success
@@ -887,11 +890,20 @@ function renderYearOptions() {
     const select = document.getElementById("yearSelect");
     const data = getTransactions();
 
-    const years = [...new Set(
+    let years = [...new Set(
         data
             .filter(t => t.date) //
             .map(t => new Date(t.date).getFullYear())
     )].sort((a, b) => b - a);
+
+    if (years.length === 0) {
+        years = [new Date().getFullYear()];
+    }
+
+    if (!years.includes(currentYear)) {
+        currentYear = years[0]; // ambil tahun terbaru
+        currentMonth = null;
+    }
 
     select.innerHTML = ``;
 
@@ -914,6 +926,7 @@ function changeYear() {
 function refreshUI() {
     renderTransactions();
     renderMonthlySummary();
+    updateMonthLabel();
     renderChart();
     hitungTotal();
 }
@@ -923,14 +936,14 @@ function init() {
     renderCategoryList();
     renderFilterCategories();
     hitungTotal();
-    currentYear = new Date().getFullYear();
+
+    currentYear = null;
     currentMonth = null;
-    renderTransactions();
-    renderChart();
-    loadTheme();
-    renderMonthlySummary();
-    updateMonthLabel();
+
     renderYearOptions();
+    refreshUI()
+
+    loadTheme();
     updateSortButton();
 }
 
